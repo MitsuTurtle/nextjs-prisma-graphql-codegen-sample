@@ -8,7 +8,6 @@ const EMAIL_SERVER = process.env.EMAIL_SERVER
 const EMAIL_FROM = process.env.EMAIL_FROM
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET
 
-
 if (!EMAIL_SERVER || !EMAIL_FROM || !NEXTAUTH_SECRET) {
   throw new Error('EMAIL_SERVER, or EMAIL_FROM, or NEXTAUTH_SECRET not found.')
 }

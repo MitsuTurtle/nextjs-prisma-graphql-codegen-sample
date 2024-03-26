@@ -1,4 +1,4 @@
-import type { Resolvers } from "@/generated/resolvers-types";
+import type { Resolvers } from '@/generated/resolvers-types'
 
 export const resolvers: Resolvers = {
   Query: {
@@ -12,7 +12,7 @@ export const resolvers: Resolvers = {
         where: { userId: currentUser.id },
       })
       return todos
-    }
+    },
   },
   Mutation: {
     addTodo: async (_parent, { title }, { prisma, currentUser }) => {
@@ -25,7 +25,11 @@ export const resolvers: Resolvers = {
       })
       return todo
     },
-    updateTodo: async (_parent, { todoId, title, completed }, { prisma, currentUser }) => {
+    updateTodo: async (
+      _parent,
+      { todoId, title, completed },
+      { prisma, currentUser },
+    ) => {
       if (!currentUser) {
         throw new Error('User not logged in.')
       }
@@ -37,7 +41,9 @@ export const resolvers: Resolvers = {
         where: { id: todoId },
         data: {
           ...(title && { title }),
-          ...(completed !== undefined && completed !== null ? { completed } : {}),
+          ...(completed !== undefined && completed !== null
+            ? { completed }
+            : {}),
         },
         include: { user: true },
       })
@@ -56,6 +62,6 @@ export const resolvers: Resolvers = {
         include: { user: true },
       })
       return todo
-    }
+    },
   },
 }
