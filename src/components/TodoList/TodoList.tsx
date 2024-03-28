@@ -67,7 +67,7 @@ export const TodoList: FC = () => {
         />
         <button className="bg-gray-200 p-2">追加</button>
       </form>
-      <li className="mt-5">
+      <ul className="mt-5">
         {todos.map((todo) => {
           return (
             <li key={todo.id} className={`${todo.completed && 'line-through'}`}>
@@ -81,11 +81,11 @@ export const TodoList: FC = () => {
                 onChange={(e) => handleChange(todo.id, e.target.checked)}
               />
               <span> / </span>
-              <button onClick={() => handleDelete(todo.id)}>🗑️</button>
+              <button onClick={() => handleDelete(todo.id)}>🗑</button>
             </li>
           )
         })}
-      </li>
+      </ul>
     </div>
   )
 }
